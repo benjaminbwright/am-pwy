@@ -1,6 +1,6 @@
 <!--Don't forget the header-->
 <?php get_header(); ?>		
-		<h3>Archive for
+		<h3>Find Pie In
 			<!--Find out what type of archive to display-->
 			<?php if ( is_category() ) :?>
 				<?php single_cat_title(); ?>
@@ -16,8 +16,16 @@
 				Selection
 			<?php endif; ?>
 		</h3>
+			<?php
+			$parentCatName = single_cat_title('',false);
+			$parentCatID = get_cat_ID($parentCatName);
+			$childCats = get_categories( 'child_of='.$parentCatID );
+			if(is_array($childCats)):
+			foreach($childCats as $child){ ?>
+			<h2><?php echo $child->name; ?></h2>
+			<?php query_posts('cat='.$child->term_id); ?>
 		<!--The loop-->
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php while ( have_posts() ) : the_post(); $do_not_duplicate = $post->ID;?>
 			
 			<!--
 			Let the users style their own articles.
@@ -53,7 +61,13 @@
 			</article>
 			
 			<hr>
-		<?php endwhile; ?>		
+			
+		<?php
+			endwhile;
+			wp_reset_query();
+			}
+			endif;
+			?>		
 		
 <!--Don't forget the footer.-->
 <?php get_footer(); ?>
