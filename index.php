@@ -19,7 +19,10 @@
 			</article>
 			
 			<hr>
-		<?php endwhile; ?>		
+		<?php endwhile; ?>
+
+		<!--Front Page Sidebar-->		
+		<?php dynamic_sidebar('front-page-sidebar'); ?>		
 		
 <!--Don't forget the footer.-->
 <?php get_footer(); ?>

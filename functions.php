@@ -118,6 +118,23 @@ function mytheme_widgets_init() {
 			'after_title'	=> '</h3>'
 		)
 	);
+
+	//Front Page sidebar widget area
+	register_sidebar(
+		array(
+			//What's the name, and what theme does it live in?
+			'name' 			=> __('Front Page Sidebar Widget Area', 'mytheme'),
+			//What's the specific id for the sidebar
+			'id' 			=> 'front-page-sidebar',
+			//Tell us about this sidebar
+			'description'	=> __('Appears on Front pages above the footer widgets. Limited to 300px', 'mytheme'),
+			//tags & CSS classes for styling
+			'before_widget' => '<aside id="%1$s" class="widget col-md-3 %2$s">',
+			'after_widget' 	=> '</aside>',
+			'befor_title'	=> '<h3 class="widget-title">',
+			'after_title'	=> '</h3>'
+		)
+	);	
 }
 
 add_action(
