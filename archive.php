@@ -1,6 +1,6 @@
 <!--Don't forget the header-->
 <?php get_header(); ?>		
-		<h3>Find Pie In
+		<h2>Find Pie In
 			<!--Find out what type of archive to display-->
 			<?php if ( is_category() ) :?>
 				<?php single_cat_title(); ?>
@@ -15,15 +15,22 @@
 			<?php else :?>
 				Selection
 			<?php endif; ?>
-		</h3>
+		</h2>
 			<?php
+			//Initialize the parent category name variable
 			$parentCatName = single_cat_title('',false);
+			//Get the category ID
 			$parentCatID = get_cat_ID($parentCatName);
+			//get an array of the category's children
 			$childCats = get_categories( 'child_of='.$parentCatID );
+			//If an array of child categories was built,
 			if(is_array($childCats)):
+			//Echo the child category name as a header
 			foreach($childCats as $child){ ?>
-			<h2><?php echo $child->name; ?></h2>
-			<?php query_posts('cat='.$child->term_id); ?>
+			<h3><?php echo $child->name; ?></h3>
+			<?php
+			//output all of the posts in the child category  
+			query_posts('cat='.$child->term_id); ?>
 		<!--The loop-->
 		<?php while ( have_posts() ) : the_post(); $do_not_duplicate = $post->ID;?>
 			
@@ -61,7 +68,7 @@
 			</article>
 			
 			<hr>
-			
+
 		<?php
 			endwhile;
 			wp_reset_query();
