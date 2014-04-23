@@ -75,6 +75,13 @@
 			}
 			endif;
 			?>		
-		
+		<?php if (is_array($childCats)) : ?>
+			<aside id="town-sidebar" class="widget">
+				<h2>Towns</h2>
+				<?php foreach ($childCats as $child) : ?>
+					<h4><?php echo $child->name; ?></h4>
+				<?php endforeach; ?>		
+			</aside>		
+		<?php endif; ?>
 <!--Don't forget the footer.-->
 <?php get_footer(); ?>
