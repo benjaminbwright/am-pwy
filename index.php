@@ -1,6 +1,6 @@
 <!--Don't forget the header-->
 <?php get_header(); ?>		
-
+	<?php _lichen_ridiculous(); ?>
 		<!--The loop-->
 		<?php while ( have_posts() ) : the_post(); ?>
 			

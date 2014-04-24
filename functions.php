@@ -143,3 +143,5 @@ add_action(
 	//The action
 	'mytheme_widgets_init'
 );
+
+require get_template_directory() . '/lichen/functions.php';
